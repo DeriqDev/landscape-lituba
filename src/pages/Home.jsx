@@ -1,9 +1,11 @@
-import React from 'react'
-import { Canvas } from '@react-three/fiber'
+import React, { useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { Mockup } from '../models/Mockup'
 import { Environment } from '@react-three/drei'
+import Ligths from '../components/Ligths'
 
 const Home = () => {
+
   return (
     <div className='header1'>
         <div className='left'>
@@ -25,16 +27,19 @@ const Home = () => {
                     <div className='right_right_right'>
                         <Canvas className='w-full h-screen bg-transparent' dpr={[1, 1.5]} >
                         <fog attach="fog" args={['#191920', 0, 15]} />
-                        {/* <directionalLight position={[1, 1, 1]} intensity={2}/> */}
+                        <directionalLight position={[1, 1, 1]} intensity={2}/>
+                        
                         {/* <ambientLight intensity={0.5}/> */}
                         {/* <hemisphereLight 
                             skyColor="#b1e1f" 
                             groundColor="#000000" 
                             intensity={1}/> */}
                             <Environment preset='apartment'/>
+                          <Ligths />
                             <Mockup 
                                 position={[0, -1, 0]}
-                                scale={10}/>
+                                scale={10}
+                                />
                         </Canvas>
                     </div>
                 </div>
